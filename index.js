@@ -3,14 +3,25 @@ import bodyParser from "body-parser";
 
 const app = express();
 const port = 3000;
+let post = ``;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
+const postGenerator = (req, res, next) => {
+  post = `${req.body.blog_post_input}`;
+  next();
+}
+
+app.use(postGenerator);
 
 app.get("/", (req, res) => {
   res.render("index.ejs")
 });
 
+app.post("/submit", (req, res) => {  
+  res.render("index.ejs", { post })
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
