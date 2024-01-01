@@ -1,30 +1,35 @@
 <section class="container w-75 pb-5 m-auto">
   <form action="/submit" method="post" class="row | flex-column gap-2 justify-content-start align-items-start">
     <div class="w-100 | row | flex flex-row d-lg-flex justify-content-between align-items-center">
-      <h2 for="blog_post_input" class="form-label | col-9 | fw-bold">Enter Blog Post</h2>
+      <h2 class="form-label | col-9 | fw-medium">Enter Blog Post</h2>
       <button type="submit" class="w-100px | btn btn-primary | col-3">Post</button>
     </div>
-      
+    
     <div class="col-12">
-      <input type="text" class="form-control" id="blog_post_input" name="blog_post_input">
-      <input type="text" class="form-control h" id="blog_post_input" name="blog_post_input">
-      <input type="date" class="form-control" id="blog_post_input" name="blog_post_input">
+      <label for="blog_post_title" class="form-label | fw-medium">Title</label>
+      <input type="text" class="form-control" id="blog_post_title" name="blog_post_title">
+      
+      <label for="blog_post_content" class="form-label | fw-medium">Content</label>
+      <input type="text" class="form-control" id="blog_post_content" name="blog_post_content">
+      
+      <label for="blog_post_date" class="form-label | fw-medium">Date</label>
+      <input type="date" class="form-control" id="blog_post_date" name="blog_post_date">
     </div>
   </form>
 </section>
 
 <section class="w-75 m-auto | card text-center">
-  <% if (locals.post) { %>
+  <% if (locals.title && locals.content) { %>
     <h4 class="card-header">
-      <%= post %>
+      <%= title %>
     </h4>
     <article class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <!-- <h5 class="card-title">Special title treatment</h5> -->
+      <p class="card-text"><%= content %></p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </article>
     <div class="card-footer text-muted">
-      2 days ago
+      <%= date %>
     </div>
   <% } else { %>
     <h1>No Posts</h1>
