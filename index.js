@@ -23,6 +23,10 @@ app.get("/", (req, res) => {
   res.render("index.ejs")
 });
 
+app.get("/posts", (req, res) => {
+  res.render("index.ejs")
+});
+
 app.post("/submit", (req, res) => {  
   let postTitle = `${req.body.blog_post_title}`;
   let postContent= `${req.body.blog_post_content}`;
